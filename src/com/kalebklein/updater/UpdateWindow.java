@@ -143,7 +143,7 @@ public class UpdateWindow extends JFrame implements PropertyChangeListener
 		{
 			progressBar.setValue(0);
 			
-			DownloadTask task = new DownloadTask(context, downloadURL, saveDir + "/test");
+			DownloadTask task = new DownloadTask(context, downloadURL, saveDir);
 			task.addPropertyChangeListener(context);
 			task.execute();
 		}
