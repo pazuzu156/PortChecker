@@ -16,19 +16,19 @@ public class UpdateCheck implements Runnable
 {
 	private JFrame context;
 	boolean cmd = false;
-	
+
 	// For Command Line update. No context is passed into this one.
 	public UpdateCheck(boolean cmd)
 	{
 		this.context = null;
 		this.cmd = cmd;
 	}
-	
+
 	public UpdateCheck(JFrame context)
 	{
 		this.context = context;
 	}
-	
+
 	@Override
 	public void run()
 	{
@@ -46,9 +46,9 @@ public class UpdateCheck implements Runnable
 			reader.close();
 			in.close();
 			line = builder.toString();
-			
+
 			int version_code = Integer.parseInt(line);
-			
+
 			if(Main.VERSION_CODE < version_code)
 			{
 				int option = JOptionPane.showConfirmDialog(context, "There's an update available. Would you like to download this now?", "Check for Updates", JOptionPane.YES_NO_OPTION);
@@ -60,15 +60,11 @@ public class UpdateCheck implements Runnable
 						new UpdateWindow();
 					}
 					else
-					{
 						new UpdateWindow(cmd);
-					}
 				}
 			}
 			else
-			{
 				JOptionPane.showMessageDialog(context, "You are currently up to date!", "Check for Updates", JOptionPane.INFORMATION_MESSAGE);
-			}
 		}
 		catch(MalformedURLException e)
 		{
