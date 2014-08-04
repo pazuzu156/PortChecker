@@ -111,6 +111,7 @@ public class PortCheckerGUI extends JFrame
 		
 		portField = new JTextField();
 		portField.setBounds(10, 75, 100, 30);
+		portField.addActionListener(new ActionHandler());
 		contentPane.add(portField);
 		
 		check = new JButton("Check Port");
@@ -161,46 +162,55 @@ public class PortCheckerGUI extends JFrame
 			}
 			else if(src == check)
 			{
-				if(hostname.equals(""))
+				check(hostname, port);
+			}
+			else if(src == portField)
+			{
+				check(hostname, port);
+			}
+		}
+		
+		private void check(String hostname, int port)
+		{
+			if(hostname.equals(""))
+			{
+				JOptionPane.showMessageDialog(context, "Error: You must supply a hostname!", "Hostname Empty", JOptionPane.ERROR_MESSAGE);
+			}
+			else
+			{
+				if(port <= 0)
 				{
-					JOptionPane.showMessageDialog(context, "Error: You must supply a hostname!", "Hostname Empty", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(context, "Error: You must supply a valid port number!", "Port Parsing Error", JOptionPane.ERROR_MESSAGE);
 				}
 				else
 				{
-					if(port <= 0)
+					check.setText("Checking, please wait...");
+					check.setEnabled(false);
+					hnField.setEnabled(false);
+					portField.setEnabled(false);
+					
+					Thread thread = new Thread()
 					{
-						JOptionPane.showMessageDialog(context, "Error: You must supply a valid port number!", "Port Parsing Error", JOptionPane.ERROR_MESSAGE);
-					}
-					else
-					{
-						check.setText("Checking, please wait...");
-						check.setEnabled(false);
-						hnField.setEnabled(false);
-						portField.setEnabled(false);
-						
-						Thread thread = new Thread()
+						@Override
+						public void run()
 						{
-							@Override
-							public void run()
-							{
-								String message = "";
-								
-								if(new PortChecker(hostname, port).run())
-									message = String.format("The port: %s is open on host: %s.\nConnection success.", port, hostname);
-								else
-									message = String.format("The port: %s is unreachable on host: %s.\nConnection failure.", port, hostname);
-								
-								JOptionPane.showMessageDialog(context, message, "Results", JOptionPane.INFORMATION_MESSAGE);
-								
-								check.setText("Check Port");
-								check.setEnabled(true);
-								hnField.setEnabled(true);
-								portField.setEnabled(true);
-							}
-						};
-						
-						thread.start();
-					}
+							String message = "";
+							
+							if(new PortChecker(hostname, port).run())
+								message = String.format("The port: %s is open on host: %s.\nConnection success.", port, hostname);
+							else
+								message = String.format("The port: %s is unreachable on host: %s.\nConnection failure.", port, hostname);
+							
+							JOptionPane.showMessageDialog(context, message, "Results", JOptionPane.INFORMATION_MESSAGE);
+							
+							check.setText("Check Port");
+							check.setEnabled(true);
+							hnField.setEnabled(true);
+							portField.setEnabled(true);
+						}
+					};
+					
+					thread.start();
 				}
 			}
 		}
