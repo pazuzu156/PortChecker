@@ -87,7 +87,7 @@ public class NewUpdateWindow extends JFrame
 			}
 			else if(e.getSource() == changelog)
 			{
-				String url ="http://javadl.sun.com/webapps/download/AutoDL?BundleId=76860";
+				String url ="http://cdn.kalebklein.com/pc/update.txt";
 				try
 				{
 					java.awt.Desktop.getDesktop().browse(java.net.URI.create(url));
