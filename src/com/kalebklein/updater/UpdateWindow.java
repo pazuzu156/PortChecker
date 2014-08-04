@@ -33,6 +33,7 @@ public class UpdateWindow extends JFrame implements PropertyChangeListener
 	public UpdateWindow(boolean cmd)
 	{
 		this.cmd = cmd;
+		this.context = this;
 		initializeWindow();
 	}
 	
@@ -164,12 +165,9 @@ public class UpdateWindow extends JFrame implements PropertyChangeListener
 				lblInfo.setText("Update Complete!");
 				btnRestart.setEnabled(true);
 				
-				JOptionPane.showMessageDialog(context, "Test1");
-				
 				if(cmd)
 				{
 					btnRestart.setText("Close Updater");
-					JOptionPane.showMessageDialog(context, "Test");
 				}
 			}
 		}
@@ -182,7 +180,14 @@ public class UpdateWindow extends JFrame implements PropertyChangeListener
 		{
 			if(e.getSource() == btnRestart)
 			{
-				restartApplication();
+				if(cmd)
+				{
+					System.exit(0);
+				}
+				else
+				{
+					restartApplication();
+				}
 			}
 		}
 		

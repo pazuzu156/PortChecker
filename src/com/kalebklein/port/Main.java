@@ -30,7 +30,7 @@ public class Main
 	
 	public static void main(String[] args)
 	{
-		System.out.println(String.format("Port Checker v%s (c) 2014 Kaleb Klein\nAll Rights Reserved.\n", VERSION));
+		System.out.println(String.format("Port Checker Command Line Tool\n", VERSION));
 		
 		if(args.length == 0)
 		{
@@ -48,9 +48,10 @@ public class Main
 				if(flag.equals("--help") || flag.equals("-h"))
 				{
 					String help = "Here is the list of flags Port Checker accepts:\n"
-							+ "--help | -h - Shows this help menu\n"
-							+ "--gui       - Displays the GUI interface\n"
-							+ "--update    - Checks for updates and updates Port Checker";
+							+ "--help | -h     - Shows this help menu\n"
+							+ "--gui           - Displays the GUI interface\n"
+							+ "--update        - Checks for updates and updates Port Checker\n"
+							+ "--version | -v  - Displays version and copyright info\n";
 					
 					System.out.println(help);
 				}
@@ -71,6 +72,11 @@ public class Main
 				{
 					new UpdateCheck(true).run();
 				}
+				else if(flag.equals("--version") || flag.equals("-v"))
+				{
+					System.out.println("Port Checker v" + VERSION + " build: " + VERSION_CODE
+							+ "\n(c) 2014 Kaleb Klein.\nAll Rights Reserved.\n");
+				}
 				else
 				{
 					System.out.println(String.format("'%s' is not a valid command!\n", flag));
@@ -86,7 +92,29 @@ public class Main
 		{
 			if(args[0].startsWith("-") || args[1].startsWith("-"))
 			{
-				System.out.println("Error: Flags cannot be passed as hostnames or ports!\n");
+				if(args[0].equals("-h") || args[0].equals("--help"))
+				{
+					if(args[1].equals("--help") || args[1].equals("-h"))
+					{
+						System.out.println("Shows the help message\n");
+					}
+					else if(args[1].equals("--gui")) System.out.println("Display the GUI interface for Port Checker.\nIf you're on Windows,"
+							+ " the .exe included automatically adds this flag, thus auto starting the GUI\n");
+					
+					else if(args[1].equals("--update")) System.out.println("This flag force checks for updates and updates with a GUI. \n"
+							+ "No command line updater is included with this app.\n");
+					
+					else if(args[1].equals("--version") || args[1].equals("-v")) System.out.println("This flag displays version information and copyright notices.\n");
+					
+					else
+					{
+						System.out.println("Error: '" + args[1] + "' is not a valid command! No help information can be found.\n");
+					}
+				}
+				else
+				{
+					System.out.println("Error: Flags cannot be passed as hostnames or ports!\n");
+				}
 			}
 			else
 			{

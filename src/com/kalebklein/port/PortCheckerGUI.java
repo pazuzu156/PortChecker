@@ -57,7 +57,7 @@ public class PortCheckerGUI extends JFrame
 			e.printStackTrace();
 		}
 		
-		Dimension size = new Dimension(300, 220);
+		Dimension size = new Dimension(300, 210);
 		setSize(size);
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setResizable(false);
