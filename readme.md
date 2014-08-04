@@ -9,7 +9,7 @@ Port checking application build in Java.
 [Contact Me](#contact-me)
 
 ## Requirements
-[Java JDK <= 1.7](http://www.oracle.com/technetwork/java/javase/downloads/index.html)  
+[Java JDK 8+](http://www.oracle.com/technetwork/java/javase/downloads/index.html)  
 [Eclipse (Juno or above)](https://eclipse.org)  
 [launch4j (For Windows EXE)](http://launch4j.sourceforge.net/)
 

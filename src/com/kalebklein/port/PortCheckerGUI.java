@@ -48,13 +48,16 @@ public class PortCheckerGUI extends JFrame
 	
 	private void begin()
 	{
-		try
+		if(System.getProperty("os.name").contains("Windows"))
 		{
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
+			try
+			{
+				UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+			}
 		}
 		
 		Dimension size = new Dimension(300, 210);
