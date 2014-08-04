@@ -51,16 +51,26 @@ public class UpdateCheck implements Runnable
 
 			if(Main.VERSION_CODE < version_code)
 			{
-				int option = JOptionPane.showConfirmDialog(context, "There's an update available. Would you like to download this now?", "Check for Updates", JOptionPane.YES_NO_OPTION);
-				if(option == JOptionPane.YES_OPTION)
+//				int option = JOptionPane.showConfirmDialog(context, "There's an update available. Would you like to download this now?", "Check for Updates", JOptionPane.YES_NO_OPTION);
+//				if(option == JOptionPane.YES_OPTION)
+//				{
+//					if(!cmd)
+//					{
+//						context.dispose();
+//						new UpdateWindow();
+//					}
+//					else
+//						new UpdateWindow(cmd);
+//				}
+//				new NewUpdateWindow(context).run();
+				
+				if(!cmd)
 				{
-					if(!cmd)
-					{
-						context.dispose();
-						new UpdateWindow();
-					}
-					else
-						new UpdateWindow(cmd);
+					new NewUpdateWindow(context, false).run();
+				}
+				else
+				{
+					new NewUpdateWindow(context, true).run();
 				}
 			}
 			else

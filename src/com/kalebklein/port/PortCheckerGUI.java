@@ -99,7 +99,7 @@ public class PortCheckerGUI extends JFrame
 		contentPane.setLayout(null);
 
 		JLabel hnText = new JLabel("Hostname:");
-		hnText.setBounds(10, 10, 200, 12);
+		hnText.setBounds(10, 10, 200, 14);
 		contentPane.add(hnText);
 
 		hnField = new JTextField();
@@ -107,7 +107,7 @@ public class PortCheckerGUI extends JFrame
 		contentPane.add(hnField);
 
 		JLabel pText = new JLabel("Port Number:");
-		pText.setBounds(10, 60, 200, 12);
+		pText.setBounds(10, 60, 200, 14);
 		contentPane.add(pText);
 
 		portField = new JTextField();
@@ -116,7 +116,7 @@ public class PortCheckerGUI extends JFrame
 		contentPane.add(portField);
 
 		check = new JButton("Check Port");
-		check.setBounds(10, 115, 260, 30);
+		check.setBounds(10, 115, 275, 30);
 		check.addActionListener(new ActionHandler());
 		contentPane.add(check);
 	}
