@@ -15,6 +15,14 @@ import com.kalebklein.port.Main;
 public class UpdateCheck implements Runnable
 {
 	private JFrame context;
+	boolean cmd = false;
+	
+	// For Command Line update. No context is passed into this one.
+	public UpdateCheck(boolean cmd)
+	{
+		this.context = null;
+		this.cmd = cmd;
+	}
 	
 	public UpdateCheck(JFrame context)
 	{
@@ -46,8 +54,15 @@ public class UpdateCheck implements Runnable
 				int option = JOptionPane.showConfirmDialog(context, "There's an update available. Would you like to download this now?", "Check for Updates", JOptionPane.YES_NO_OPTION);
 				if(option == JOptionPane.YES_OPTION)
 				{
-					context.dispose();
-					new UpdateWindow();
+					if(!cmd)
+					{
+						context.dispose();
+						new UpdateWindow();
+					}
+					else
+					{
+						new UpdateWindow(cmd);
+					}
 				}
 			}
 			else

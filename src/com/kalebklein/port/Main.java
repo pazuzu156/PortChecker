@@ -1,5 +1,7 @@
 package com.kalebklein.port;
 
+import com.kalebklein.updater.UpdateCheck;
+
 public class Main
 {
 	public static final int VERSION_CODE = 1;
@@ -47,7 +49,8 @@ public class Main
 				{
 					String help = "Here is the list of flags Port Checker accepts:\n"
 							+ "--help | -h - Shows this help menu\n"
-							+ "--gui       - Displays the GUI interface\n";
+							+ "--gui       - Displays the GUI interface\n"
+							+ "--update    - Checks for updates and updates Port Checker";
 					
 					System.out.println(help);
 				}
@@ -63,6 +66,10 @@ public class Main
 							System.exit(0);
 						}
 					});
+				}
+				else if(flag.equals("--update"))
+				{
+					new UpdateCheck(true).run();
 				}
 				else
 				{

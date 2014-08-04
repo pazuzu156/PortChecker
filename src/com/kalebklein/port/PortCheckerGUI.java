@@ -13,6 +13,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 
@@ -47,6 +48,15 @@ public class PortCheckerGUI extends JFrame
 	
 	private void begin()
 	{
+		try
+		{
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		
 		Dimension size = new Dimension(300, 220);
 		setSize(size);
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
