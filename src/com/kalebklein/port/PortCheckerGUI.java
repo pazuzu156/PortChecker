@@ -104,6 +104,7 @@ public class PortCheckerGUI extends JFrame
 
 		hnField = new JTextField();
 		hnField.setBounds(10, 25, 215, 30);
+		hnField.addActionListener(new ActionHandler());
 		contentPane.add(hnField);
 
 		JLabel pText = new JLabel("Port Number:");
@@ -167,10 +168,7 @@ public class PortCheckerGUI extends JFrame
 			else if(src == update)
 				new UpdateCheck(context).run();
 
-			else if(src == check)
-				check(hostname, port);
-
-			else if(src == portField)
+			else if(src == check || src == portField || src == hnField)
 				check(hostname, port);
 		}
 

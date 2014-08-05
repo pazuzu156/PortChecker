@@ -4,8 +4,8 @@ import com.kalebklein.updater.UpdateCheck;
 
 public class Main
 {
-	public static final int VERSION_CODE = 3;
-	public static final String VERSION = "1.1";
+	public static final int VERSION_CODE = 6;
+	public static final String VERSION = "1.1.2";
 
 	private String hostname;
 	private int port;

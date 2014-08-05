@@ -5,6 +5,6 @@ rmdir /S /Q out\bin
 cd out
 mkdir bin
 cd bin
-echo "" > .gitkeep
+echo "\n" > .gitkeep
 cd ../../
 echo Done

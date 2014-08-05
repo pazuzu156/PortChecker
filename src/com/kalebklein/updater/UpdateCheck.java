@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import com.kalebklein.port.Main;
+import com.kalebklein.port.Connectivity;
 
 public class UpdateCheck implements Runnable
 {
@@ -32,57 +33,46 @@ public class UpdateCheck implements Runnable
 	@Override
 	public void run()
 	{
-		try
+		Connectivity con = Connectivity.getInstance().execute();
+		if(con.isConnected())
 		{
-			URL url = new URL("http://cdn.kalebklein.com/pc/version.txt");
-			InputStream in = url.openStream();
-			BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-			StringBuilder builder = new StringBuilder();
-			String line = "";
-			while((line = reader.readLine()) != null)
+			try
 			{
-				builder.append(line);
-			}
-			reader.close();
-			in.close();
-			line = builder.toString();
-
-			int version_code = Integer.parseInt(line);
-
-			if(Main.VERSION_CODE < version_code)
-			{
-//				int option = JOptionPane.showConfirmDialog(context, "There's an update available. Would you like to download this now?", "Check for Updates", JOptionPane.YES_NO_OPTION);
-//				if(option == JOptionPane.YES_OPTION)
-//				{
-//					if(!cmd)
-//					{
-//						context.dispose();
-//						new UpdateWindow();
-//					}
-//					else
-//						new UpdateWindow(cmd);
-//				}
-//				new NewUpdateWindow(context).run();
-				
-				if(!cmd)
+				URL url = new URL("http://cdn.kalebklein.com/pc/version.txt");
+				InputStream in = url.openStream();
+				BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+				StringBuilder builder = new StringBuilder();
+				String line = "";
+				while((line = reader.readLine()) != null)
 				{
-					new NewUpdateWindow(context, false).run();
+					builder.append(line);
+				}
+				reader.close();
+				in.close();
+				line = builder.toString();
+
+				int version_code = Integer.parseInt(line);
+
+				if(Main.VERSION_CODE < version_code)
+				{
+					if(!cmd)
+						new NewUpdateWindow(context, false).run();
+					else
+						new NewUpdateWindow(context, true).run();
 				}
 				else
-				{
-					new NewUpdateWindow(context, true).run();
-				}
+					JOptionPane.showMessageDialog(context, "You are currently up to date!", "Check for Updates", JOptionPane.INFORMATION_MESSAGE);
 			}
-			else
-				JOptionPane.showMessageDialog(context, "You are currently up to date!", "Check for Updates", JOptionPane.INFORMATION_MESSAGE);
+			catch(MalformedURLException e)
+			{
+				JOptionPane.showMessageDialog(context, "Error Code: 0x000001\n\nIf you see this, contact me and let me know the error code being displayed.", "ERROR", JOptionPane.ERROR_MESSAGE);
+			}
+			catch(IOException e)
+			{
+				JOptionPane.showMessageDialog(context, "Error connecting to the update server! Please try again later.", "ERROR", JOptionPane.ERROR_MESSAGE);
+			}
 		}
-		catch(MalformedURLException e)
-		{
-			JOptionPane.showMessageDialog(context, "Error Code: 0x000001\n\nIf you see this, contact me and let me know the error code being displayed.", "ERROR", JOptionPane.ERROR_MESSAGE);
-		}
-		catch(IOException e)
-		{
-			JOptionPane.showMessageDialog(context, "Error connecting to server! Please try again later.", "ERROR", JOptionPane.ERROR_MESSAGE);
-		}
+		else
+			JOptionPane.showMessageDialog(context, "You are currently up to date!", "Check for Updates", JOptionPane.INFORMATION_MESSAGE);
 	}
 }

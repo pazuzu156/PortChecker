@@ -3,12 +3,10 @@ package com.kalebklein.updater;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
@@ -33,7 +31,7 @@ public class NewUpdateWindow extends JFrame
 	
 	private void initializeWindow()
 	{
-		Dimension size = new Dimension(280, 150);
+		Dimension size = new Dimension(285, 150);
 		setSize(size);
 		setResizable(false);
 		setLocationRelativeTo(null);
@@ -47,7 +45,7 @@ public class NewUpdateWindow extends JFrame
 		contentPane.setLayout(null);
 		
 		JLabel message = new JLabel("An update is available!");
-		message.setBounds(60, 10, 200, 14);
+		message.setBounds(75, 10, 200, 14);
 		contentPane.add(message);
 		
 		changelog = new JButton("See What's New");
@@ -86,17 +84,7 @@ public class NewUpdateWindow extends JFrame
 				}
 			}
 			else if(e.getSource() == changelog)
-			{
-				String url ="http://cdn.kalebklein.com/pc/update.txt";
-				try
-				{
-					java.awt.Desktop.getDesktop().browse(java.net.URI.create(url));
-				}
-				catch (IOException ex)
-				{
-					JOptionPane.showMessageDialog(context, "Error opening changelog. Please try again later.", "ERROR", JOptionPane.ERROR_MESSAGE);
-				}
-			}
+				new Changelog().run();
 		}
 	}
 }
