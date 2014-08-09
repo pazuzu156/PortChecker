@@ -13,7 +13,6 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.UIManager;
 import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 
@@ -43,24 +42,12 @@ public class PortCheckerGUI extends JFrame
 
 	public PortCheckerGUI()
 	{
-		super("Port Checker");
+		setTitle("Port Checker");
 		begin();
 	}
 
 	private void begin()
 	{
-		if(System.getProperty("os.name").contains("Windows"))
-		{
-			try
-			{
-				UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-			}
-			catch (Exception e)
-			{
-				e.printStackTrace();
-			}
-		}
-
 		Dimension size = new Dimension(300, 210);
 		setSize(size);
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -103,6 +90,7 @@ public class PortCheckerGUI extends JFrame
 		contentPane.add(hnText);
 
 		hnField = new JTextField();
+		hnField.setToolTipText("Domain, URL, or IP address of host");
 		hnField.setBounds(10, 25, 215, 30);
 		hnField.addActionListener(new ActionHandler());
 		contentPane.add(hnField);
@@ -112,6 +100,7 @@ public class PortCheckerGUI extends JFrame
 		contentPane.add(pText);
 
 		portField = new JTextField();
+		portField.setToolTipText("Port number you're testing against");
 		portField.setBounds(10, 75, 100, 30);
 		portField.addActionListener(new ActionHandler());
 		contentPane.add(portField);

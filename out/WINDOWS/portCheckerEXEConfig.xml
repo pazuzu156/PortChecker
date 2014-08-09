@@ -21,4 +21,16 @@
     <jdkPreference>preferJre</jdkPreference>
     <runtimeBits>64/32</runtimeBits>
   </jre>
+  <versionInfo>
+    <fileVersion>1.0.0.0</fileVersion>
+    <txtFileVersion>1.0</txtFileVersion>
+    <fileDescription>Windows Executable for Port Checker GUI</fileDescription>
+    <copyright>(c) 2014 Kaleb Klein</copyright>
+    <productVersion>1.1.2.6</productVersion>
+    <txtProductVersion>1.1.2</txtProductVersion>
+    <productName>Port Checker</productName>
+    <companyName></companyName>
+    <internalName>Port Checker</internalName>
+    <originalFilename>PortChecker.exe</originalFilename>
+  </versionInfo>
 </launch4jConfig>

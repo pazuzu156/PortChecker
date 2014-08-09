@@ -1,11 +1,14 @@
 package com.kalebklein.port;
 
+import javax.swing.UIManager;
+import javax.swing.UIManager.LookAndFeelInfo;
+
 import com.kalebklein.updater.UpdateCheck;
 
 public class Main
 {
-	public static final int VERSION_CODE = 6;
-	public static final String VERSION = "1.1.2";
+	public static final int VERSION_CODE = 7;
+	public static final String VERSION = "1.2";
 
 	private String hostname;
 	private int port;
@@ -54,6 +57,18 @@ public class Main
 				else if(flag.equals("--gui"))
 				{
 					System.out.println("Opening GUI..");
+					try
+					{
+						for(LookAndFeelInfo info : UIManager.getInstalledLookAndFeels())
+						{
+							if("Nimbus".equals(info.getName()))
+							{
+								UIManager.setLookAndFeel(info.getClassName());
+								break;
+							}
+						}
+					}
+					catch(Exception e) { }
 					new PortCheckerGUI().run(new PortCheckerGUI.Callback()
 					{
 						@Override
