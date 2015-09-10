@@ -2,8 +2,8 @@
 <launch4jConfig>
   <dontWrapJar>false</dontWrapJar>
   <headerType>gui</headerType>
-  <jar>C:\Users\Kaleb\Desktop\PortChecker\out\bin\portChecker.jar</jar>
-  <outfile>C:\Users\Kaleb\Desktop\PortChecker\out\bin\PortChecker.exe</outfile>
+  <jar>C:\Users\kklei\git\PortChecker\out\bin\portChecker.jar</jar>
+  <outfile>C:\Users\kklei\git\PortChecker\out\WINDOWS\PortChecker.exe</outfile>
   <errTitle></errTitle>
   <cmdLine>--gui</cmdLine>
   <chdir>.</chdir>
@@ -11,23 +11,25 @@
   <downloadUrl>http://java.com/download</downloadUrl>
   <supportUrl></supportUrl>
   <stayAlive>false</stayAlive>
+  <restartOnCrash>false</restartOnCrash>
   <manifest></manifest>
   <icon></icon>
   <jre>
     <path></path>
     <bundledJre64Bit>false</bundledJre64Bit>
+    <bundledJreAsFallback>false</bundledJreAsFallback>
     <minVersion>1.8.0</minVersion>
     <maxVersion></maxVersion>
     <jdkPreference>preferJre</jdkPreference>
     <runtimeBits>64/32</runtimeBits>
   </jre>
   <versionInfo>
-    <fileVersion>1.0.0.0</fileVersion>
-    <txtFileVersion>1.0</txtFileVersion>
+    <fileVersion>1.2.0.0</fileVersion>
+    <txtFileVersion>1.2</txtFileVersion>
     <fileDescription>Windows Executable for Port Checker GUI</fileDescription>
-    <copyright>(c) 2014 Kaleb Klein</copyright>
-    <productVersion>1.1.2.6</productVersion>
-    <txtProductVersion>1.1.2</txtProductVersion>
+    <copyright>© 2014-2015 Kaleb Klein</copyright>
+    <productVersion>1.2.0.0</productVersion>
+    <txtProductVersion>1.2</txtProductVersion>
     <productName>Port Checker</productName>
     <companyName></companyName>
     <internalName>Port Checker</internalName>
