@@ -33,4 +33,4 @@ Should any problems arise during any stage, please feel free to contact me at va
 [Twitter](https://twitter.com/Pazuzu156)  
 [Facebook](https://www.facebook.com/)  
 [Google+](https://plus.google.com/u/0/+KalebKleinProgramming/posts)  
-[Email](mailto:kalebk@kalebklein.com)  
+[Email](mailto:klein.jae@gmail.com)  
