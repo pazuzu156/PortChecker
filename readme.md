@@ -6,7 +6,7 @@ Port checking application build in Java.
 [Setting Up](#setting-up)  
 [Compiling](#compiling)  
 [Contributors](#contributors)  
-[Contact Me](#contact-me) 
+[Contact Me](#contact-me)
 
 ## Requirements
 [Java JDK 8+](http://www.oracle.com/technetwork/java/javase/downloads/index.html)  
